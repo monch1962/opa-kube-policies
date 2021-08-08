@@ -5,28 +5,28 @@ package kubernetes.nsa.validating.pod_security
 operations = {"CREATE", "UPDATE"}
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	not input.spec.privileged.allowPrivilegeEscalation == false
 
 	msg := "Need to prevent pod privilege escalation"
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	not input.spec.runAsUser.rule == "MustRunAsNonRoot"
 
 	msg := "Need to set MustRunAsNonRoot for pod"
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	not input.SELinux.supplementalGroups.rule == "MustRunAs"
 
 	msg := "Must set SELinux group MustRunAs configuration"
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	input.SELinux.supplementalGroups.rule == "MustRunAs"
 	not input.SELinux.supplementalGroups.ranges.min >= 1
 
@@ -34,14 +34,14 @@ deny[msg] {
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	not input.SELinux.runAsGroup.rule == "MustRunAs"
 
 	msg := "Must set SELinux group MustRunAs configuration"
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	input.SELinux.runAsGroup.rule == "MustRunAs"
 	not input.SELinux.runAsGroup.ranges.min >= 1
 
@@ -49,14 +49,14 @@ deny[msg] {
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	not input.SELinux.fsGroup.rule == "MustRunAs"
 
 	msg := "Must set a SELinux file system group MustRunAs configuration"
 }
 
 deny[msg] {
-	input.kind == PodSecurityPolicy
+	input.kind == "PodSecurityPolicy"
 	input.SELinux.fsGroup.rule == "MustRunAs"
 	not input.SELinux.fsGroup.ranges.min >= 1
 
