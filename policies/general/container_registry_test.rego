@@ -23,7 +23,7 @@ test_unauthorised_registry_blocked {
 	}
 }
 
-test_unauthorised_registry_blocked {
+test_allow_authorised_registry {
 	not deny with input as {
 		"apiVersion": "audit.k8s.io/v1",
 		"kind": "Pod",
