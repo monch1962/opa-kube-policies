@@ -58,7 +58,7 @@ test_deny_requests_cpu_missing {
 }
 
 test_deny_requests_memory_missing {
-	not deny with input as {
+	deny with input as {
 		"apiVersion": "v1",
 		"kind": "ResourceQuota",
 		"metadata": {"name": "compute-resources"},
