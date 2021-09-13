@@ -1,7 +1,7 @@
 package kubernetes.nsa.validating.resource_quota
 
 test_accept_all_important_resource_quotas_defined {
-	not deny with input as {
+	deny with input as {
 		"apiVersion": "v1",
 		"kind": "ResourceQuota",
 		"metadata": {"name": "compute-resources"},

@@ -1,7 +1,7 @@
 package kubernetes.nsa.validating.pod_security
 
 test_accept_all_required_policies_defined {
-	not deny with input as {
+	count(deny) == 0 with input as {
 		"apiVersion": "networking.k8s.io/v1",
 		"kind": "NetworkPolicy",
 		"metadata": {

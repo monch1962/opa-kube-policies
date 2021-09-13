@@ -1,7 +1,7 @@
 package kubernetes.nsa.validating.encryption_configuration
 
 test_not_deny_with_kms_encryption_defined {
-	not deny with input as {
+	count(deny) == 0 with input as {
 		"apiVersion": "apiserver.config.k8s.io/v1",
 		"kind": "EncryptionConfiguration",
 		"resources": [

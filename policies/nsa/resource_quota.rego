@@ -4,6 +4,10 @@ package kubernetes.nsa.validating.resource_quota
 
 operations = {"CREATE", "UPDATE"}
 
+admit {
+	not deny
+}
+
 deny[msg] {
 	input.kind == "ResourceQuota"
 	not input.spec.hard.requests.cpu

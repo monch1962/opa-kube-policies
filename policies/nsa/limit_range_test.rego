@@ -1,7 +1,7 @@
 package kubernetes.nsa.validating.limit_range
 
 test_accept_all_important_limits_defined {
-	not deny with input as {
+	count(deny) == 0 with input as {
 		"apiVersion": "v1",
 		"kind": "LimitRange",
 		"metadata": {"name": "cpu-min-max-demo-lr"},

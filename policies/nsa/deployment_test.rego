@@ -1,7 +1,7 @@
 package kubernetes.nsa.validating.deployment
 
 test_accept_read_only_root_filesystem {
-	not deny with input as {
+	count(deny) == 0 with input as {
 		"kind": "Deployment",
 		"metadata": {
 			"labels": {"app": "web"},
