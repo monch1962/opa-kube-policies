@@ -15,7 +15,7 @@ deny[msg] {
 	image := input.spec.containers[_].image
 
 	# trace(sprintf("image: %v", [image]))
-	not startswith(image, approved_container_registry)
+	not startswith(image, cs.approved_container_registry)
 
 	msg := sprintf("Image '%v' defined for deployment is not from an approved registry", [image])
 }
@@ -23,7 +23,7 @@ deny[msg] {
 deny[msg] {
 	input.kind == "Deployment"
 	image := input.spec.template.spec.containers[_].image
-	not startswith(image, approved_container_registry)
+	not startswith(image, cs.approved_container_registry)
 
 	msg := sprintf("Image '%v' defined for deployment is not from an approved registry", [image])
 }
