@@ -3,7 +3,7 @@ package kubernetes.nsa.validating.audit_policy
 # Link to OPA Playground to play with this policy: https://play.openpolicyagent.org/p/KZm2TBblQK
 
 test_unauthorised_registry_blocked {
-	deny with input as {
+	count(deny) == 0 with input as {
 		"apiVersion": "audit.k8s.io/v1",
 		"kind": "Pod",
 		"spec": {"containers": [
@@ -21,10 +21,12 @@ test_unauthorised_registry_blocked {
 			},
 		]},
 	}
+
+	trace(sprintf("deny count: %v", [count(deny)]))
 }
 
 test_allow_authorised_registry {
-	not deny with input as {
+	count(deny) == 0 with input as {
 		"apiVersion": "audit.k8s.io/v1",
 		"kind": "Pod",
 		"spec": {"containers": [{
