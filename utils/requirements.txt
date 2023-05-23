@@ -6,7 +6,7 @@ mercurial==5.8.1
 protobuf==3.17.3
 pycodestyle==2.7.0
 PyYAML==5.1.2
-requests==2.26.0
+requests==2.31.0
 six==1.16.0
 toml==0.10.2
 urllib3==1.26.6
